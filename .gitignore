@@ -1,7 +1,7 @@
-/hongongjava/
 /build/
 /target/
 /workspace/
 /.settings/
 /.classpath
 /.project
+*.class
