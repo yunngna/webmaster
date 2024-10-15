@@ -8,6 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.yedam.common.DataSource;
+import com.yedam.dao.MemberMapper;
+import com.yedam.vo.Member;
 //( build path > library > server runtime > add library > server runtime > tomchat  > run > run on server )
 //서블릭 실행하기 위한 url 
 // 응답 정보를 전송 
@@ -46,9 +52,32 @@ public class MemberAddServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		//4개의 파라미터 
+		String id = request.getParameter("mid");
+		String name = request.getParameter("mname");
+		String passwd = request.getParameter("pass");
+		String phone = request.getParameter("phone");
+		
+		Member member = new Member();
+		member.setMemberId(id);
+		member.setMemberName(name);
+		member.setPassword(passwd);
+		member.setPhone(phone);
+		
+		SqlSession sqlSession = DataSource.getInstance().openSession(true); // 자동 commit 으로 true 적기 
+		MemberMapper dao = sqlSession.getMapper(MemberMapper.class);
+	try {	
+		if(dao.insertMember(member)==1) {
+			response.getWriter().print("OK");
+		}
+	}catch(Exception e){
+		response.getWriter().print("NG");
+		}
+	
 	}
-
 }
+
+
