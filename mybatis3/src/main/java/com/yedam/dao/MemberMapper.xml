@@ -4,16 +4,18 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.dao.MemberMapper">
 
-
-  <select id="members" resultType="com.yedam.vo.Member">
+ 	<!-- 전체조회   -->
+  	<select id="members" resultType="com.yedam.vo.Member">
     select * from tbl_member
     </select>
     
+     <!-- 삽입  -->
     <insert id="insertMember" parameterType = "com.yedam.vo.Member">
     insert into tbl_member (member_id, member_name, password, phone)
     values (#{memberId},#{memberName},#{password},#{phone})
     </insert>
     
+     <!-- 수정 -->
     <update id="updateMember" parameterType = "com.yedam.vo.Member">
     update tbl_member set responsibility = 'User' <!--  무조건변경시사용 -->
     <if test= "memberName != null">
@@ -29,8 +31,22 @@
     where member_id = #{memberId} 
     </update>
     
+    <!-- 삭제  -->
     <delete id="deleteMember" parameterType = "string">
     delete from tbl_member
     where member_id = #{memberId}
     </delete>
+    
+    <!-- 단건조회  -->
+    <select id ="selectMember" parameterType = "string" resultType="com.yedam.vo.Member">
+    select member_id
+    	  ,member_name
+    	  ,password
+    	  ,phone
+    	  ,responsibility
+    	  ,creation_date
+    from tbl_member
+    where member_id = #{memberId}
+    </select>
+    
 </mapper>

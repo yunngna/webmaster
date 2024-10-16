@@ -23,7 +23,10 @@ import com.yedam.vo.Member;
 /**
  * Servlet implementation class MemberAddServlet
  */
-@WebServlet("/MemberAddServlet")
+//만약 그냥 memberAdd.html 에 상위 경로 지정 안한 다면, 해당 부분을 "/html/MemberAddServlet"으로 바꿔줘야 한다. (방법1)
+// (방법2) memberAdd.html에서 경로 지정시 , ../MemberAddServlet으로 해주고 , 서블렛 구간에서는 /MemberAddServlet 으로 지정해 준다. 
+
+@WebServlet("/MemberAddServlet")  
 public class MemberAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
