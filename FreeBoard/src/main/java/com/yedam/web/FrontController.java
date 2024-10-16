@@ -37,6 +37,7 @@ public class FrontController extends HttpServlet {
 		// url 이 http://localhost/FreeBoard/memberList.do 이면 [Control 인터페이스 상속 된] MemberListControl() 실행 
 		// url 이 http://localhost/FreeBoard/memberAdd.do 이면 [Control 인터페이스 상속 된] MemberAddControl() 실행 
 		
+		// 회원목록 보기 
 		map.put("/memberList.do", new MemberListControl()); // control 이라는 인터페이스를 구현하는 클래스 형성 
 		
 		
