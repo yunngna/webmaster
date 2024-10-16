@@ -4,6 +4,6 @@
 /.settings/
 /.classpath
 /.project
-/.class
-.classpath
-.project
+*.class
+*.classpath
+*.settings
