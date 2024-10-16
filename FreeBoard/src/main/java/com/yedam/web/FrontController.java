@@ -13,13 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-@WebServlet("*.do") // * 전체  ,  .do : .do로 끝나는 것  = .do 로 끝나는 url 경우 모두 호출 됨 -> 서브렛이 너무 많으면 관리가 복잡하기 때문에 사용 
+@WebServlet("*.do") 
+// * 전체  ,  .do : .do로 끝나는 것  = .do 로 끝나는 url 경우 모두 호출 됨 -> 서브렛이 너무 많으면 관리가 복잡하기 때문에 사용 
 public class FrontController extends HttpServlet {
 	// 필드 선언 
 	Map <String,Control> map;
 	
 	
-	// 객체 생성
+	// 객체 생성 
 //	public FrontController () {
 //		System.out.println("객체 생성");
 //	}
