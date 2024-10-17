@@ -19,7 +19,7 @@ public class BoardListControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String page = req.getParameter("page");
-		page = page == null ? "1" : page;
+		page = page == null ? "1" : page; // 3항연산자 | 만약 page가 null이면 page = 1 , 아니면 입력받은 page = page 
 		
 		// 글목록 보여주기. 조회 후 jsp 전달 
 		BoardService svc = new BoardServiceImpl();
@@ -27,7 +27,7 @@ public class BoardListControl implements Control {
 		List<BoardVO>list= svc.boardList(Integer.parseInt(page));
 		
 		req.setAttribute("boardList", list);
-		req.setAttribute("page",new PageDTO(Integer.parseInt(page)));
+		req.setAttribute("page",new PageDTO(Integer.parseInt(page))); // page는 문자열이니까 정수(int)로 변환 
 		
 		// 보여줄 jsp 페이지 
 		req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp").forward(req, resp);

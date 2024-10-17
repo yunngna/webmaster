@@ -46,6 +46,8 @@
         	#{content},
         	#{writer})
     </insert>
+    
+    
     <!-- 수정 (글 수정) -->
     <update id="updateBoard" parameterType = "board">
 	    update tbl_board
