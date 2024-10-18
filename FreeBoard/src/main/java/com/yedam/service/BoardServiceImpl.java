@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
+import com.yedam.common.SearchDTO;
 import com.yedam.mapper.BoardMapper;
 import com.yedam.vo.BoardVO;
 
@@ -18,13 +19,21 @@ public class BoardServiceImpl implements BoardService {
 //	public List<BoardVO> boardList() {
 //		return mapper.boardList();
 //	}
-
-//페이징 전체 출력 
+	
+	//페이징 전체 출력 
 	@Override
-	public List<BoardVO> boardList(int page) {
-		return mapper.listWithPage(page);
+	public List<BoardVO> listWithPage(SearchDTO search) {
+		// TODO Auto-generated method stub
+		return mapper.listWithPage(search);
 	}
-//등록
+
+	
+//	@Override
+//	public List<BoardVO> boardList() {
+//		return null;
+//	}
+	
+	//등록
 	@Override
 	public boolean registerBoard(BoardVO board) {
 		// TODO Auto-generated method stub
@@ -48,5 +57,13 @@ public class BoardServiceImpl implements BoardService {
 		mapper.updateCount(boardNo); // 조회수 증가 
 		return mapper.selectBoard(boardNo);
 	}
+// 페이징 카운터 ( 데이터 총 갯수 가져오기)	
+	@Override
+	public int getTotalCount(SearchDTO search) {
+		return mapper.selectCount(search);
+	}
+
+
+	
 	
 }

@@ -2,14 +2,16 @@ package com.yedam.mapper;
 
 import java.util.List;
 
+import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
 
 public interface BoardMapper {
 	// 게시글 목록 가져오기  
-	List<BoardVO> boardList (); // 컬렉션을 사용하면 목록이 한건 나오면 출력이 된다.
+//	List<BoardVO> boardList (); // 컬렉션을 사용하면 목록이 한건 나오면 출력이 된다.
+	//List<BoardVO> boardList ();
 	
 	// 페이징 처리해서 목록 가져오기 (page를 paramete로 받아서 실행)
-	List<BoardVO>listWithPage(int page);
+	List<BoardVO>listWithPage(SearchDTO search);
 	
 	// 게시글 등록 
 	int insertBoard(BoardVO board);
@@ -25,5 +27,9 @@ public interface BoardMapper {
 
 	// 조회수 증가 
 	int updateCount(int boardNo);
+	
+	
+	// 페이징 계산 데이터 건수 계산
+	int selectCount(SearchDTO search);
 	
 }

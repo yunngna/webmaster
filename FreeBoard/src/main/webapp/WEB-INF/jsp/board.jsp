@@ -8,8 +8,12 @@
 	<h3>상세페이지(board.jsp)</h3>
 <% 
 	BoardVO bvo = (BoardVO)request.getAttribute("boardvo");
+	String pg = (String)request.getAttribute("page"); // (3) 페이지 번호 넘겨주기 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String wdate= sdf.format(bvo.getWriteDate());
+	String sc = request.getParameter("searchCondition");
+	String kw = request.getParameter("keyword");
+
 %>
 		<form action="modifyBoard.do" method="get">
 			<table class="table">
@@ -46,7 +50,8 @@
 <script>
  document.querySelector('input[value="수정"]')
  	.addEventListener('click', function(e){
-	 location.href = 'modifyBoard.do?bno=<%=bvo.getBoardNo()%>';
+	 location.href = 'modifyBoard.do?page=<%=pg%>&bno=<%=bvo.getBoardNo()%>&searchCondition=<%=sc%>&keyword=<%=kw%>';
+	 /*(3) 수정버튼이 작동 시 페이지 번호와 게시판 번호를 modifyBoard.do 로넘겨 준다. */
  });
  
  document.querySelector('input[value="삭제"]')

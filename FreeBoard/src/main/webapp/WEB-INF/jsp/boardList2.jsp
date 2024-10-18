@@ -7,8 +7,7 @@
 <jsp:include page="../includes/header.jsp"></jsp:include>
 
 <!-- jstl 사용하기 위한 라이브러리 불러오기 -->
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- c태그 -->
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> <!-- 데이터 포맷에 사용 -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 
 	<h3>글목록(boardList.jsp)</h3>
 <%
@@ -50,20 +49,23 @@
 		</tr>
 	</thread>
 	<tbody>
-	
-	<!-- 반복문 사용 (열고 닫고 한번에 하려면 마지막에 / 붙여준다)-->
-	<c:forEach var="board" items="${boardList}">
+	<%for (BoardVO board : list) { 
+		//date 포맷 (2024-01-01 12:22:33)
+	String wdate= sdf.format(board.getWriteDate()); // 날짜를 문자 변수에 넣어 저장 
+	%>
 		<tr>
-		<td><c:out value="${board.boardNo}"/> </td>
-		<td><a href='board.do?page=${page.page}&bno=${board.boardNo }&searchCondition=${searchCondition }&keyword=${keyword}'>${board.title }</a></td>
-		<td><c:out value="${board.writer}"/></td>
-		<td><fmt:formatDate value ="${board.writeDate}" pattern="yyyy-mm-dd HH:mm:ss"/></td>
-		<td><c:out value="${board.viewCnt}"/></td>
+		<td><%=board.getBoardNo() %></td>
+		<!--(1) 페이지에서 수정 한 후 목록으로 나가면 수정한 목록 페이지에 유지 하기 위해 현재 페이지 번호와 게시글 번호를 같이 넘겨 준다. (두개 이상 넘기는 경우 &으로 연결)
+		그리고 board.do 에도 페이지, 게시글 번호 둘다 넘겨준다.  -->
+		<td><a href='board.do?page=<%=paging.getPage()%>&bno=<%=board.getBoardNo()%>&searchCondition=<%=sc%>&keyword=<%=kw%>'><%=board.getTitle()%></a></td>
+		<td><%=board.getWriter() %></td>
+		<td><%=wdate %></td>
+		<td><%=board.getViewCnt() %></td>
 		</tr>
-	</c:forEach>
-	
+	<%} %>
 	</tbody>
 </table>
+<!-- paging 값 불러 오면 PageDTO(startPage=1, endPage=10, prev=false, next=true, page=10) 이렇게 출력됨     -->
 
 <!-- paging -->
 <nav aria-label="Page navigation example">
@@ -71,56 +73,41 @@
   
   <!-- 이전페이지 여부  -->
   <!-- isPrev() | prev 는 boolean 타입의 변수로 해당 변수가 true인지 여부 알려줄때 is변수() 사용한다. -->
-  <c:choose>
-  	<c:when test="${page.isPrev() }">
-  		<li class="page-item">
-    	 	<a class="page-link" href='boardList.do?page=${page.startPage() -1 }'>Previous</a>
+  <%if (paging.isPrev()){ %> 
+ 		<li class="page-item">
+    	 	<a class="page-link" href="boardList.do?page=<%=paging.getStartPage()-1%>">Previous</a>
     	 </li>
-    </c:when>
-    <c:otherwise>
+    <%} else{ %>
     	<li class="page-item disabled">
       		<a class="page-link">Previous</a>
       	 </li>
-   </c:otherwise>
-  </c:choose>
-  
-  
+      	<%} %>
       	
     <!-- 페이지 출력  -->
-    <c:forEach var="p" begin=${page.startPage()} end=${page.endPage()}>
-    	<c:choose>
-    		<c:when test="${page.page== p }">
-    			<li class="page-item active" aria-current="page">
-    			<span class="page-link">"${page.page}"</span>
-    			</li>
-    		</c:when>
-    		<c:otherwise>
-    			<li class="page-item">
-    			<a class="page-link" href='boardList.do?searchCondition=${searchCondition}&keyword=${keyword }&page=${page.page}'>${page.page }></a>
+    <%for (int p = paging.getStartPage(); p <= paging.getEndPage(); p++) {%>
+    	<%if (paging.getPage() == p){%>
+    	<li class="page-item active" aria-current="page">
+    		<span class="page-link"><%=p %></span>
+    		</li>
+    <%}else{ %>
+    	<li class="page-item">
+    	<!-- 리스트에 검색해서 나온 결과가 페이지가 변환되도 (searchCondition 와 keyword , page 전달해서) 연속해서 출력 되게 하기  -->
+    		<a class="page-link" href="boardList.do?searchCondition=<%=sc%>&keyword=<%=kw %>&page=<%=p %>"><%=p %></a>
+    	</li>
+    	<%}%>
+   <%}%>
    
-    		</c:otherwise>
-    	
-    	</c:choose>
     
-    </c:forEach>
-
-   
      <!-- 다음페이지 여부  -->
-     
-   <c:choose>
-  	<c:when test="${page.isNext() }">
-  		<li class="page-item">
-    	 	<a class="page-link" href="boardList.do?page=${page.endPage() -1 }">Next</a>
+  <%if (paging.isNext()){ %>
+ 		<li class="page-item">
+    	 	<a class="page-link" href="boardList.do?page=<%=paging.getEndPage()+1%>">Next</a>
     	 </li>
-    </c:when>
-    <c:otherwise>
+    <%}else{ %>
     	<li class="page-item disabled">
       		<a class="page-link">Next</a>
       	 </li>
-   </c:otherwise>
-  </c:choose>
-  
-
+      	<%} %>
   </ul>
 </nav>
 

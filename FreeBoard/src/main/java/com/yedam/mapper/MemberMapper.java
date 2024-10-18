@@ -2,6 +2,7 @@ package com.yedam.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 
 import com.yedam.vo.MemberVO;
 
@@ -18,5 +19,8 @@ public interface MemberMapper {
 	public int deleteMember(String memberId);
 	// 단건 조회 
 	public MemberVO selectMember(String memberId);
+	
+	// id 와 password 조회 
+	public MemberVO loginMember(@Param("id") String id , @Param("pw")String pw);
 
 }

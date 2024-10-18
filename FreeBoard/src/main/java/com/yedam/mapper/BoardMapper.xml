@@ -21,12 +21,26 @@
     </select>
     
     <!-- 페이징 전체조회  (게시글 목록을 페이징 해서  가져오기)-->
-    <select id ="listWithPage" parameterType ="int">
+    <select id ="listWithPage" parameterType ="search">
     select b.*
 	from (select rownum rn, a.*
       	 from (select *
               from tbl_board
-              order by board_no)a)b
+              <where>
+              <choose>
+              	<when test="searchCondition == 'T'.toString() ">
+              	 title like '%'||#{keyword}||'%' 
+              	</when>
+              	<when test="searchCondition == 'W'.toString() ">
+              	 writer like '%'||#{keyword}||'%' 
+              	</when>
+              	<when test="searchCondition == 'TW'.toString() ">
+              	 (title like '%'||#{keyword}||'%') or (writer like '%'||#{keyword}||'%')
+              	</when>
+              </choose>
+              </where>
+             
+              order by board_no desc)a)b
 	where b.rn > (#{page} -1 ) * 5
 	<![CDATA[
 	and   b.rn <= (#{page}  * 5)
@@ -85,6 +99,26 @@
     set   view_cnt = view_cnt + 1
     where board_no = #{boardNo}
     </update>
+    
+    <!-- 페이징 카운드 (데이터 건수 가져오기) -->
+    <select id="selectCount" parameterType="search" resultType="int">
+    	select count(1)
+    	from   tbl_board
+    	<where>
+              <choose>
+              	<when test="searchCondition == 'T'.toString() ">
+              	 UPPER(title) like '%'||UPPER(#{keyword})||'%' 
+              	</when>
+              	<when test="searchCondition == 'W'.toString() ">
+              	 UPPER(writer) like '%'||UPPER(#{keyword})||'%' 
+              	</when>
+              	<when test="searchCondition == 'TW'.toString() ">
+              	 (UPPER(title) like '%'||UPPER(#{keyword})||'%') or (UPPER(writer) like '%'||UPPER(#{keyword})||'%')
+              	</when>
+              </choose>
+          </where>
+ 
+    </select>
    
    
 </mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%5level [%thread] - %msg%n</pattern>
+    </encoder>
+  </appender>
+<!-- BoardMapper 가 실행 될때 마다 실행된다. -->
+  <logger name="com.yedam.mapper.BoardMapper">
+    <level value="debug"/>
+    <!-- 필요한 내용만 볼려면 debug로 지정 -->
+  </logger>
+  <root level="error">
+    <appender-ref ref="stdout"/>
+  </root>
+
+</configuration>
