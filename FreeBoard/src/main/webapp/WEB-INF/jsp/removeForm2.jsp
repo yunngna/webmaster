@@ -4,25 +4,14 @@
     
 <jsp:include page="../includes/header.jsp"></jsp:include> 
 
-<!-- jstl 사용하기 위한 라이브러리 불러오기 -->
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- c태그 -->
-
 	<h3>삭제화면 (removeForm.jsp)</h3>
 <%
 	String msg = (String) request.getAttribute("msg");
 	BoardVO board = (BoardVO) request.getAttribute("boardvo");
 %>
-
-<c:choose>
-    <c:when test="${not empty msg}">
-        <p style="color:red;">${msg}</p>
-    </c:when>
-    <c:otherwise>
-        <p></p> <!-- 필요에 따라 빈 경우에 대한 처리 -->
-    </c:otherwise>
-</c:choose>
-
-
+<%if(msg != null){%>
+<p style ="color:red;"> <%=msg%></p>	
+<%}%>
 
 	<form action="removeBoard.do" method ="POST">
 		<input type ="hidden" name="bno" value="<%=board.getBoardNo()%>">

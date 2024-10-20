@@ -3,9 +3,6 @@
     pageEncoding="UTF-8"%>
     
 <jsp:include page="../includes/header.jsp"></jsp:include> 
-<!-- jstl 사용하기 위한 라이브러리 불러오기 -->
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- c태그 -->
-
 
 	<h3>수정화면 (modifyForm.jsp)</h3>
 <%
@@ -20,16 +17,9 @@
 	//session 의 아이디값 가져와서 다른 아이디는 수정 불가 하게 만들기
 	String logId = (String) session.getAttribute("logId");
 %>
-<c:choose>
-	<c:when test="${not empty msg}">
-		<p style ="color:red;"> <%=msg%></p>
-	</c:when>
-	<c:otherwise>
-		<p></p> <!-- 빈 경우 에 대한 처리 필요 -->
-	</c:otherwise>
-</c:choose>
-
-
+<%if(msg != null){%>
+<p style ="color:red;"> <%=msg%></p>	
+<%}%>
 
 	<form action="modifyBoard.do" method ="POST">
 	<!-- hidden 으로 안보기에 게시글 번호와 페이지  modifyBoard.do post 로 전달-->
@@ -59,14 +49,7 @@
 	 	</tr>	
 	 	<tr>
 	 		<td colspan ="2" align = "center">
-	 			<c:choose>
-	 				<c:when test = ${not empty logIn && logId == board.writer}>
-	 					<input type="submit" value="저장" class="btn btn-success">
-	 				</c:when>
-	 				<c:otherwise>
-	 					<input type="submit" value="저장" class="btn btn-success" disabled >
-	 				</c:otherwise>
-	 			</c:choose>
+	 			<input type="submit" value="저장" <%=logId != null && logId.equals(board.getWriter()) ? "" : "disabled" %> class="btn btn-success">
 	 			<input type="reset" value="취소" class="btn btn-warning">
 	 		</td>
 	 	</tr>		

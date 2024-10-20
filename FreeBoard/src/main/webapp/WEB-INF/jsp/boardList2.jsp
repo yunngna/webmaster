@@ -43,11 +43,11 @@
 
 
 <table class="table">
-	<thread>
+	<thead>
 		<tr>
 		<th>글번호</th><th>제목</th><th>작성자</th><th>작성일자</th><th>조회수</th>
 		</tr>
-	</thread>
+	</thead>
 	<tbody>
 	<%for (BoardVO board : list) { 
 		//date 포맷 (2024-01-01 12:22:33)
@@ -101,7 +101,7 @@
      <!-- 다음페이지 여부  -->
   <%if (paging.isNext()){ %>
  		<li class="page-item">
-    	 	<a class="page-link" href="boardList.do?page=<%=paging.getEndPage()+1%>">Next</a>
+    	 	<a class="page-link" href="boardList.do?page=<%=paging.getEndPage() %>">Next</a>
     	 </li>
     <%}else{ %>
     	<li class="page-item disabled">
