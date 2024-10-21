@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../includes/header.jsp"></jsp:include>
+
 
 <!-- jstl 사용하기 위한 라이브러리 불러오기 -->
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- c태그 -->
@@ -55,7 +55,7 @@
 	<c:forEach var="board" items="${boardList}">
 		<tr>
 		<td><c:out value="${board.boardNo}"/> </td>
-		<td><a href='board.do?page=${paging.page}&bno=${board.boardNo }&searchCondition=${searchCondition}&keyword=${keyword}'>${board.title }</a></td>
+		<td><a href='board.do?page=${paging.page}&bno=${board.boardNo}&searchCondition=${searchCondition}&keyword=${keyword}'>${board.title}</a></td>
 		<td><c:out value="${board.writer}"/></td>
 		<td><fmt:formatDate value ="${board.writeDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 		<td><c:out value="${board.viewCnt}"/></td>
@@ -72,9 +72,9 @@
   <!-- 이전페이지 여부  -->
   <!-- isPrev() | prev 는 boolean 타입의 변수로 해당 변수가 true인지 여부 알려줄때 is변수() 사용한다. -->
 		<c:choose>
-			<c:when test="${paging.prev}">
+			<c:when test="${page.prev}">
 				<li class="page-item"><a class="page-link"
-					href='boardList.do?page=${paging.startPage -1}&searchCondition=${searchCondition}&keyword=${keyword}'>Previous</a></li>
+					href='boardList.do?page=${page.startPage-1}&searchCondition=${searchCondition}&keyword=${keyword}'>Previous</a></li>
 			</c:when>
 			<c:otherwise>
 				<li class="page-item disabled"><a class="page-link">Previous</a>
@@ -85,16 +85,16 @@
 
 
 <!-- 페이지 출력  -->
-    <c:forEach var="p" begin="${paging.startPage}" end="${paging.endPage}">
+    <c:forEach var="p" begin="${page.startPage}" end="${page.endPage}">
     	<c:choose>
-    		<c:when test="${paging.page== p }">
+    		<c:when test="${page.page==p}">
     			<li class="page-item active" aria-current="page">
-    			<span class="page-link">"${p}"</span>
+    			<span class="page-link">${p}</span>
     			</li>
     		</c:when>
     		<c:otherwise>
     			<li class="page-item">
-    			<a class="page-link" href='boardList.do?searchCondition=${searchCondition}&keyword=${keyword}&page=${p}'>${p}></a>
+    			<a class="page-link" href='boardList.do?searchCondition=${searchCondition}&keyword=${keyword}&page=${p}'>${p}</a>
    				</li>
     		</c:otherwise>
     	
@@ -106,9 +106,9 @@
      <!-- 다음페이지 여부  -->
      
    <c:choose>
-  	<c:when test="${paging.next}">
+  	<c:when test="${page.next}">
   		<li class="page-item">
-    	 	<a class="page-link" href="boardList.do?page=${paging.endPage + 1 }">Next</a>
+    	 	<a class="page-link" href="boardList.do?page=${page.endPage+1}">Next</a>
     	 </li>
     </c:when>
     <c:otherwise>
@@ -122,4 +122,3 @@
   </ul>
 </nav>
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>

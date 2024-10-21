@@ -54,11 +54,13 @@
     insert into tbl_board (board_no,
                         	title,
                         	content,
-                        	writer)
+                        	writer,
+                        	img)
 	values  (board_seq.nextval,
         	#{title},
         	#{content},
-        	#{writer})
+        	#{writer},
+        	#{img})
     </insert>
     
     
@@ -89,6 +91,7 @@
 	    	  ,view_cnt
 	    	  ,write_date
 	    	  ,update_date
+	    	  ,img
 	    from tbl_board
 	    where board_no = #{boardNo}
     </select>

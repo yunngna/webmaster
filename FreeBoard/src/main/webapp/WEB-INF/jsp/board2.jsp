@@ -39,7 +39,6 @@
 		<tr>
 			<th>이미지</th>
 			<td colspan="3">
-
 				<c:if test="${boardvo.img != null}">
 					<img src="images/${boardvo.img}" width="100px">
 				</c:if>
@@ -66,7 +65,7 @@
 <script>
  document.querySelector('input[value="수정"]')
  	.addEventListener('click', function(e){
-	 location.href = 'modifyBoard.do?page=<%=pg%>&bno=<%=bvo.getBoardNo()%><%=sc%>searchCondition=%&keyword=<%=kw%>';
+	 location.href = 'modifyBoard.do?page=<%=pg%>&bno=<%=bvo.getBoardNo()%>&searchCondition=<%=sc%>&keyword=<%=kw%>';
 	 /*(3) 수정버튼이 작동 시 페이지 번호와 게시판 번호를 modifyBoard.do 로넘겨 준다. */
  });
  

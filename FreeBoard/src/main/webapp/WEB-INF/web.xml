@@ -3,8 +3,36 @@
 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>FreeBoard</display-name>
   
+  <!--  타일즈 설정  -->
+  <listener>
+    <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+  </listener>
+  
+  <!-- tiles로 끝나는 url 검색시 tiles.xml 파일 실행  -->
+  <servlet>
+    <servlet-name>Tiles Dispatch Servlet</servlet-name>
+    <servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Tiles Dispatch Servlet</servlet-name>
+    <url-pattern>*.tiles</url-pattern>
+  </servlet-mapping>
+  
+  <!-- front controller 등록 (web.xml에 등록하는 방식 [.do로 끝나는 url 사용시 front 를 실행 시키는데 front 는 com.yedam.web.FrontController 이다.] -->
+   <servlet>
+    <servlet-name>front</servlet-name>
+    <servlet-class>com.yedam.web.FrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>front</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
   
 </web-app>

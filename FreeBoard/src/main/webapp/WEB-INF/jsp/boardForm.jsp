@@ -11,19 +11,15 @@
 	String logId = (String) session.getAttribute("logId");
 %>
 
-<c:choose>
-    <c:when test="${not empty msg}">
-        <p style="color:red;">${msg}</p>
-    </c:when>
-    <c:otherwise>
-        <p></p> <!-- 필요에 따라 빈 경우에 대한 처리 -->
-    </c:otherwise>
-</c:choose>
+<c:if  test="${msg != null }">
+	 <p style="color:red;">${msg }</p>
+</c:if>
 
 
 
-	<form action="addBoard.do" method ="POST">
-		<input class="form-control" type="hidden" name="writer" value="<%=logId%>">
+
+	<form action="addBoard.do" method ="POST" enctype="multipart/form-data"> <!-- 사진 업로드 버튼 적용 시  enctype="application/multipart/form-data" 추가(img 는 바이트로 구성 되어 있어서 텍스트 형식이 아닌 바이트 타입으로 전달한다는 의미)-->
+		<input class="form-control" type="hidden" name="writer" value="${logId }">
 	 	<table class="table">
 	 	<tr>
 	 		<th>제목</th><td><input class="form-control" type="text" name="title"></td>
@@ -32,7 +28,10 @@
 	 		<th>내용</th><td><textarea class="form-control" name="content" rows="3" cols="100"></textarea></td>
 	 	</tr>
 	 	<tr>
-	 		<th>작성자</th><td><%=logId%></td>
+	 		<th>이미지</th><td><input type ="file" name="img" class="form-control"></td>
+	 	</tr>
+	 	<tr>
+	 		<th>작성자</th><td>${logId }</td>
 	 	</tr>	
 	 	<tr>
 	 		<td colspan ="2" align = "center">

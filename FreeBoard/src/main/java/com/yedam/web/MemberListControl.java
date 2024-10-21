@@ -25,7 +25,7 @@ public class MemberListControl implements Control{
 		try {
 			// memberList.do 요청을 재지정 |  요청하는 곳을 재 지정 하는 기능 (= 요청받아보내줄 값을 나타낼 곳을 지정)
 			// memberList.do 로 요청된 페이지에서 memberList.jsp 요청 재 지정  ( 실제 url 은 동일하게 나타난다. )
-			req.getRequestDispatcher("WEB-INF/jsp/memberList.jsp").forward(req, resp); 
+			req.getRequestDispatcher("admin/memberList.tiles").forward(req, resp); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

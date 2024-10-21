@@ -20,47 +20,43 @@
 	//session 의 아이디값 가져와서 다른 아이디는 수정 불가 하게 만들기
 	String logId = (String) session.getAttribute("logId");
 %>
-<c:choose>
-	<c:when test="${not empty msg}">
-		<p style ="color:red;"> <%=msg%></p>
-	</c:when>
-	<c:otherwise>
-		<p></p> <!-- 빈 경우 에 대한 처리 필요 -->
-	</c:otherwise>
-</c:choose>
+
+<c:if  test="${msg != null }">
+	 <p style="color:red;">${msg }</p>
+</c:if>
 
 
 
 	<form action="modifyBoard.do" method ="POST">
 	<!-- hidden 으로 안보기에 게시글 번호와 페이지  modifyBoard.do post 로 전달-->
-		<input type ="hidden" name="bno" value="<%=board.getBoardNo()%>">
-		<input type ="hidden" name="page" value="<%=pg%>">
-		<input type = "hidden" name="searchCondition" value="<%=sc%>">
-		<input type = "hidden" name ="keyword" value="<%=kw%>">
+		<input type ="hidden" name="bno" value="${boardvo.boardNo}">
+		<input type ="hidden" name="page" value="${page.page}">
+		<input type = "hidden" name="searchCondition" value="${searchCondition}">
+		<input type = "hidden" name ="keyword" value="${keyword}">
 	 	<table class="table">
 	 	<tr>
-	 		<th>글번호</th><td><%=board.getBoardNo() %></td>
-	 		<th>조회수</th><td><%=board.getViewCnt() %></td>
+	 		<th>글번호</th><td>${boardvo.boardNo}</td>
+	 		<th>조회수</th><td>${boardvo.viewCnt}</td>
 	 	</tr>
 	 	<tr>
 	 		<th>제목</th>
 	 		<td>
-	 			<input class="form-control" type="text" name="title" value = "<%=board.getTitle()%>">
+	 			<input class="form-control" type="text" name="title" value = "${boardvo.title}">
 	 		</td>
 	 	</tr>
 	 	<tr>
 	 		<th>내용</th>
 	 		<td>
-	 		<textarea class="form-control" name="content" rows="3" cols="100" ><%=board.getContent() %></textarea>
+	 		<textarea class="form-control" name="content" rows="3" cols="100" >${boardvo.content}</textarea>
 	 		</td>
 	 	</tr>
 	 	<tr>
-	 		<th>작성자</th><td colspan ="3"><%=board.getWriter() %></td>
+	 		<th>작성자</th><td colspan ="3">${boardvo.writer}</td>
 	 	</tr>	
 	 	<tr>
 	 		<td colspan ="2" align = "center">
 	 			<c:choose>
-	 				<c:when test = ${not empty logIn && logId == board.writer}>
+	 				<c:when test = "${logId != null && logId == boardvo.writer}">
 	 					<input type="submit" value="저장" class="btn btn-success">
 	 				</c:when>
 	 				<c:otherwise>
