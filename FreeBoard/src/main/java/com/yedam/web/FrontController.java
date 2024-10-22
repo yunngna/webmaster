@@ -6,12 +6,27 @@ import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.control.JavaScriptCont;
+import com.yedam.control.board.AddBoardControl;
+import com.yedam.control.board.AddBoardForm;
+import com.yedam.control.board.AddMemberCont;
+import com.yedam.control.board.BoardControl;
+import com.yedam.control.board.BoardListControl;
+import com.yedam.control.board.ModifyBoardControl;
+import com.yedam.control.board.removeBoardControl;
+import com.yedam.control.member.DelMemberCont;
+import com.yedam.control.member.LogOutControl;
+import com.yedam.control.member.LoginControl;
+import com.yedam.control.member.MemberAddControl;
+import com.yedam.control.member.MemberAddFormControl;
+import com.yedam.control.member.MemberJsonCont;
+import com.yedam.control.member.MemberListControl;
+import com.yedam.control.reply.ReplyListCont;
 
 //@WebServlet("*.do") 
 // * 전체  ,  .do : .do로 끝나는 것  = .do 로 끝나는 url 경우 모두 호출 됨 -> 서브렛이 너무 많으면 관리가 복잡하기 때문에 사용 
@@ -65,6 +80,15 @@ public class FrontController extends HttpServlet {
 		
 		//자바스크립트 실행
 		map.put("/javascript.do", new JavaScriptCont());
+		
+		// json 관련
+		map.put("/memberJson.do", new MemberJsonCont());
+		map.put("/addMemberJson.do", new AddMemberCont());
+		map.put("/removeMemberJson.do", new DelMemberCont());
+		
+		
+		//댓글관련
+		map.put("/replyList.do", new ReplyListCont());
 		
 		
 	}

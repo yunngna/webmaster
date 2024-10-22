@@ -61,6 +61,16 @@
 	</table>
 </form>
 
+<!-- 댓글관련 -->
+<table id="replyList" class ="table">
+	<thead>
+		<tr>
+			<th>댓글번호</th><th>내용</th><th>작성자</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+
 
 <jsp:include page="../includes/footer.jsp"></jsp:include>
 <script>
@@ -77,3 +87,6 @@
  
  
 </script>
+<!--댓글 자바스크립트 연결 -->
+<script src ="js/replyService.js"></script>
+<script src="js/reply.js"></script>
