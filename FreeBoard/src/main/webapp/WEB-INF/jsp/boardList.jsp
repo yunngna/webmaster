@@ -55,7 +55,7 @@
 	<c:forEach var="board" items="${boardList}">
 		<tr>
 		<td><c:out value="${board.boardNo}"/> </td>
-		<td><a href='board.do?page=${paging.page}&bno=${board.boardNo}&searchCondition=${searchCondition}&keyword=${keyword}'>${board.title}</a></td>
+		<td><a href='board.do?page=${page.page}&bno=${board.boardNo}&searchCondition=${searchCondition}&keyword=${keyword}'>${board.title}</a></td>
 		<td><c:out value="${board.writer}"/></td>
 		<td><fmt:formatDate value ="${board.writeDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 		<td><c:out value="${board.viewCnt}"/></td>

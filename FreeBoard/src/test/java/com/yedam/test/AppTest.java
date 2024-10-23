@@ -94,10 +94,10 @@ public class AppTest {
 //		};
 		
 		//댓글 전체보기 
-//		List<ReplyVO> list = mapper.selectList(404); // 목록이라서 List로 반환 		
-//		for(ReplyVO rpv : list) {
-//		System.out.println(rpv.toString());
-//		}
+		List<ReplyVO> list = mapper.selectList(404); // 목록이라서 List로 반환 		
+		for(ReplyVO rpv : list) {
+		System.out.println(rpv.toString());
+		}
 		
 		//댓글 번호로 단건 조회 
 //		if (mapper.selectReply(5) == null) {

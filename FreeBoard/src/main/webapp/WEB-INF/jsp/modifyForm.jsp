@@ -22,7 +22,7 @@
 %>
 
 <c:if  test="${msg != null }">
-	 <p style="color:red;">${msg }</p>
+	 <p style="color:red;">${msg}</p>
 </c:if>
 
 

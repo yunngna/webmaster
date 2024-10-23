@@ -3,11 +3,21 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../includes/header.jsp"></jsp:include> 
-
 <!-- jstl 사용하기 위한 라이브러리 불러오기 -->
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- c태그 -->
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> <!-- 데이터 포맷에 사용 -->
+    
+<style>
+	.reply span{
+		display: inline-block;
+	}
+	.reply ul{
+		list-style-type: none;
+	}
+	
+</style>
+<jsp:include page="../includes/header.jsp"></jsp:include> 
+
 
 	<h3>상세페이지(board.jsp)</h3>
 <% 
@@ -62,31 +72,75 @@
 </form>
 
 <!-- 댓글관련 -->
-<table id="replyList" class ="table">
-	<thead>
-		<tr>
-			<th>댓글번호</th><th>내용</th><th>작성자</th>
-		</tr>
-	</thead>
-	<tbody></tbody>
-</table>
+
+
+<div class="container reply">
+<!-- 댓글등록 -->
+<div class="header">
+	댓글내용<input class="col-sm-8" id="reply">
+	<button class="col-sm-3" id="addReply">댓글등록</button>
+</div>
+<!-- 댓글목록 -->
+<div class="content">
+	<ul>
+		<li>
+			<span class="col-sm-2">글번호</span>
+			<span class="col-sm-5">글내용</span>
+			<span class="col-sm-2">작성자</span>
+			<span class="col-sm-2">삭제</span>
+		</li>
+		<!--  <li>
+			<span class="col-sm-2">3</span>
+			<span class="col-sm-5">댓글입니다.</span>
+			<span class="col-sm-2">user01</span>
+			<span class="col-sm-2"><button>삭제</button></span>
+		</li>-->
+		
+	</ul>
+</div>
+<!-- 댓글페이징 -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 
 <jsp:include page="../includes/footer.jsp"></jsp:include>
+
+
 <script>
- document.querySelector('input[value="수정"]')
- 	.addEventListener('click', function(e){
-	 location.href = 'modifyBoard.do?page=<%=pg%>&bno=<%=bvo.getBoardNo()%><%=sc%>searchCondition=%&keyword=<%=kw%>';
-	 /*(3) 수정버튼이 작동 시 페이지 번호와 게시판 번호를 modifyBoard.do 로넘겨 준다. */
- });
+
+	const bno = "${boardvo.boardNo}";console.log(bno); //페이지의 게시글 번호 가져오기 
+	const logId = "${logId}"; console.log(logId);  // 로그인 상태의 로그아이디 가져오기
+
+	 document.querySelector('input[value="수정"]')
+ 		.addEventListener('click', function(e){
+	 	location.href = 'modifyBoard.do?page=<%=pg%>&bno=<%=bvo.getBoardNo()%>&searchCondition=<%=sc%>&keyword=<%=kw%>';
+		 /*(3) 수정버튼이 작동 시 페이지 번호와 게시판 번호를 modifyBoard.do 로넘겨 준다. */
+ 	});
  
- document.querySelector('input[value="삭제"]')
-	.addEventListener('click', function(e){
-	 location.href = 'removeBoard.do?bno=<%=bvo.getBoardNo()%>';
-});
- 
+ 	document.querySelector('input[value="삭제"]')
+		.addEventListener('click', function(e){
+		 location.href = 'removeBoard.do?bno=<%=bvo.getBoardNo()%>';
+	});
  
 </script>
+
 <!--댓글 자바스크립트 연결 -->
 <script src ="js/replyService.js"></script>
 <script src="js/reply.js"></script>
