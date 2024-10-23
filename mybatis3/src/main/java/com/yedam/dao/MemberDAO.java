@@ -1,11 +1,11 @@
 package com.yedam.dao;
 
+import java.lang.reflect.Member;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.yedam.common.DAO;
-import com.yedam.vo.Member;
+import main.java.common.DAO;
 
 public class MemberDAO extends DAO {
 	//회원목록 

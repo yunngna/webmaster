@@ -30,7 +30,7 @@
 	<form action="modifyBoard.do" method ="POST">
 	<!-- hidden 으로 안보기에 게시글 번호와 페이지  modifyBoard.do post 로 전달-->
 		<input type ="hidden" name="bno" value="${boardvo.boardNo}">
-		<input type ="hidden" name="page" value="${page}">
+		<input type ="hidden" name="page" value="${page.page}">
 		<input type = "hidden" name="searchCondition" value="${searchCondition}">
 		<input type = "hidden" name ="keyword" value="${keyword}">
 	 	<table class="table">

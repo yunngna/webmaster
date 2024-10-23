@@ -5,8 +5,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.yedam.dao.MemberMapper;
 import com.yedam.vo.Member;
+
+import main.java.com.yedam.dao.MemberMapper;
 
 public class AppTest {
 	public static void main(String[] args) { // 메인 메소드 형성 
@@ -48,10 +49,10 @@ public class AppTest {
 		
 		
 		// 전체 출력 
-		List<Member> result = dao.members();
-		for (Member member : result) {
-			System.out.println(member.toString());			
-		}
+//		List<Member> result = dao.members();
+//		for (Member member : result) {
+//			System.out.println(member.toString());			
+//		}
 		
 		
 		
