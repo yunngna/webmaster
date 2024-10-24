@@ -68,6 +68,7 @@
       
       //이벤트 삭제 함수 
       eventClick: function(arg) {
+    	  console.log(arg);
         if (confirm('Are you sure you want to delete this event?')) {
           arg.event.remove()
         }
