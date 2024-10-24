@@ -11,7 +11,7 @@
     var calendarEl = document.getElementById('calendar');
   	//Ajax 호출
   	// new Promise(성공했을때 실행 할 함수 function(){} , 실패시 실행할 함수 function(){} => 2개함수 전달)
-  	// promise 객체가 반환 될때 await를 붙이면 await안에 수행 코드가 있으면 다 실행 후에 -> 그 다음 코드 실행 (동기방식으로 진행 되게 만드는것 ) |async + function()
+  	// promise 객체가 반환 될때 await를 붙이면 await안에 수행 코드가 있으면 다 실행 후에 -> 그 다음 코드 실행 (동기방식으로 진행 되게 만드는것 ) |async + function()을 붙여줘야한다.
   		var calendarData=[];
 	    let resolve = await fetch('calendarByWirter.do')
 		let result =  await resolve.json();//.then(resolve =>resolve.json())
@@ -23,7 +23,7 @@
 		                              //})
 		                             //.catch(err=>console.log(err));
   	console.log(calendarData);
-	    
+	//데이터를 기반으로 캘린더를 그리는 역할  (여기서 설정한 옵션들이 캘린더의 모양과 동작 방식을 정의) 
     var calendar = new FullCalendar.Calendar(calendarEl, { // 자바스크립트에서 object 타입은 {중괄호} 사용 
       headerToolbar: {
         left: 'prev,next today',
