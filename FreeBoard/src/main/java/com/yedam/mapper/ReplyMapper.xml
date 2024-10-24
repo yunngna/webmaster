@@ -63,5 +63,7 @@
     where board_no = #{boardNo}
     
     </select>
+    
+    
    
 </mapper>

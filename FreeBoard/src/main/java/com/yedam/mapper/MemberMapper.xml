@@ -56,6 +56,25 @@
     	where member_id = #{id}
     	and   password = #{pw}
     </select>
+    
+    <!-- 캘린더 조회 -->
+    <select id="selectcalendars" resultType="hashmap">
+    select title as "title",
+           start_date as "start",
+           end_date as "end"
+     from tbl_event
+     order by start_date
+    </select>
+
+	<!-- 캘린더 추가 -->
+	<insert id="addEvent" parameterType = "com.yedam.vo.CalendarVO" >
+	insert into tbl_event ( title,
+                        	start_date,
+                        	end_date)
+	values (#{title},
+			#{startDate},
+			#{endDate})
+	</insert>
    
     
 </mapper>

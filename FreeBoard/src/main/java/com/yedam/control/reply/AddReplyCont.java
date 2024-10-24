@@ -48,7 +48,7 @@ public class AddReplyCont implements Control {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			// 성공시에는 {retCod:FAIL retVal:null} 반환 
+			// 실패시에는 {retCod:FAIL retVal:null} 반환 
 			result.put("retCode", "FAIL");
 			result.put("retVal",null);
 		}

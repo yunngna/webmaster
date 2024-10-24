@@ -9,7 +9,7 @@ import lombok.ToString;
 // getter setter 자동으로 설치해주기 
 // lombok 활용(설치) 
 // 1. eclipse 설치 (구글에서 검색해서 다운 받기)  2. 라이브러리 
-@getter
+@Getter
 @Setter
 @ToString
 public class Member {

@@ -1,6 +1,7 @@
 package com.yedam.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
@@ -31,5 +32,9 @@ public interface BoardMapper {
 	
 	// 페이징 계산 데이터 건수 계산
 	int selectCount(SearchDTO search);
+	
+	//사용자별 게시글 작성 건수 (아이디,이름,게시글건수) => 여러개라 list로 감싸고 안에 는 key(count,writer,memberName) 와 value값으로 적용한다.
+	List<Map<String,Object>>countByWriter();  
+	
 	
 }

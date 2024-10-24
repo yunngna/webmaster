@@ -1,11 +1,13 @@
 package com.yedam.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
 import com.yedam.mapper.MemberMapper;
+import com.yedam.vo.CalendarVO;
 import com.yedam.vo.MemberVO;
 
 // 구현 
@@ -36,5 +38,21 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.loginMember(id, pw);
 	}
 
+	@Override
+	public List<Map<String, Object>> eventList() {
+		return mapper.selectcalendars();
+	}
+
+	@Override
+	public boolean addEvent(CalendarVO event) {
+		return mapper.addEvent(event)==1;
+	}
+
+	
+
+	
+	
+
+	
 
 }

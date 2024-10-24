@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.control.AddEventCont;
+import com.yedam.control.CalendarControl;
+import com.yedam.control.CalendarWriterCont;
+import com.yedam.control.ChartControl;
+import com.yedam.control.CountWriterCont;
 import com.yedam.control.JavaScriptCont;
 import com.yedam.control.board.AddBoardControl;
 import com.yedam.control.board.AddBoardForm;
@@ -96,6 +101,15 @@ public class FrontController extends HttpServlet {
 		map.put("/addReply.do", new AddReplyCont());
 		map.put("/replyCount.do", new ReplyCountCont());
 		
+		//차트 (차트API)
+		map.put("/chart.do", new ChartControl()); //차트jsp불러오기
+		map.put("/countByWriter.do",new CountWriterCont()); //데이터 불러오는 컨트롤
+		
+		//캘린더 (캘린더 API)
+		map.put("/calendar.do", new CalendarControl()); //캘린더 jsp 불러오기 
+		map.put("/calendarByWirter.do", new CalendarWriterCont());
+			//추가
+		map.put("/addEvent.do", new AddEventCont());
 		
 	}
 	

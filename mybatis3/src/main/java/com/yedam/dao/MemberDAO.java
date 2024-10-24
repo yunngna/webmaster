@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.common.DAO;
+import com.yedam.common.DAO;
+
+
 
 public class MemberDAO extends DAO {
 	//회원목록 
@@ -27,8 +29,13 @@ public class MemberDAO extends DAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			getClose();
+			getClass();
 		}			
 		return list;
+	}
+
+	private void getOpen() {
+		// TODO Auto-generated method stub
+		
 	}
 }// close class

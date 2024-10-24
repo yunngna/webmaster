@@ -5,9 +5,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.yedam.dao.MemberMapper;
 import com.yedam.vo.Member;
-
-import main.java.com.yedam.dao.MemberMapper;
 
 public class AppTest {
 	public static void main(String[] args) { // 메인 메소드 형성 

@@ -1,9 +1,11 @@
 package com.yedam.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.yedam.vo.CalendarVO;
 import com.yedam.vo.MemberVO;
 
 // interface 기능 정의  
@@ -22,5 +24,11 @@ public interface MemberMapper {
 	
 	// id 와 password 조회 
 	public MemberVO loginMember(@Param("id") String id , @Param("pw")String pw);
+	
+	//캘린더 데이터 조회
+	List<Map<String,Object>>selectcalendars();
+	
+	//캘린더 추가
+	public int addEvent(CalendarVO event);
 
 }

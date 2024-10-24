@@ -1,11 +1,18 @@
 package com.yedam.test;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yedam.common.DataSource;
+import com.yedam.mapper.MemberMapper;
 import com.yedam.mapper.ReplyMapper;
+import com.yedam.service.MemberService;
+import com.yedam.service.MemberServiceImpl;
+import com.yedam.vo.CalendarVO;
 import com.yedam.vo.ReplyVO;
 
 public class AppTest {
@@ -74,11 +81,11 @@ public class AppTest {
 		
 		
 		// 댓글 테스트
-		SqlSession sqlSession = DataSource.getInstance().openSession();
-		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		
+//		SqlSession sqlSession = DataSource.getInstance().openSession();
+//		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+	
 		//댓글 추가
-		ReplyVO rvo = new ReplyVO();
+//		ReplyVO rvo = new ReplyVO();
 //		rvo.setReply("댓글입니다1");
 //		rvo.setReplyer("minijurie");
 //		rvo.setBoardNo(404);
@@ -94,10 +101,10 @@ public class AppTest {
 //		};
 		
 		//댓글 전체보기 
-		List<ReplyVO> list = mapper.selectList(404); // 목록이라서 List로 반환 		
-		for(ReplyVO rpv : list) {
-		System.out.println(rpv.toString());
-		}
+//		List<ReplyVO> list = mapper.selectList(404); // 목록이라서 List로 반환 		
+//		for(ReplyVO rpv : list) {
+//		System.out.println(rpv.toString());
+//		}
 		
 		//댓글 번호로 단건 조회 
 //		if (mapper.selectReply(5) == null) {
@@ -107,6 +114,39 @@ public class AppTest {
 //			System.out.println(rvo.toString());
 //		}
 		
+		//사용자별 게시글 수 조회 (이름 , 아이디 ,게시글 수 )
+//		BoardService svc = new BoardServiceImpl();
+//		List<Map<String,Object>> result = svc.countByWriter();
+//		
+//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//		String json = gson.toJson(result);
+//		
+//		System.out.println(json);
+		
+		
+		
+		//캘린더 추가 
+//		SqlSession sqlSession = DataSource.getInstance().openSession();
+//		MemberMapper mapper =sqlSession.getMapper(MemberMapper.class);
+//		
+//		CalendarVO event = new CalendarVO();
+//		event.setTitle("lunch");
+//		event.setStartD("2024-10-28T12:00:00");
+//		event.setEndD("2024-10-28T14:00:00");
+//		if (mapper.addEvent(event) == 1) {
+//			sqlSession.commit();
+//		};
+		
+		//캘린더 조회
+		MemberService svc = new MemberServiceImpl();
+		
+		List<Map<String,Object>> result = svc.eventList();
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(result);
+		
+		System.out.println(json);
+
 		
 	}// close main
 }// close class
