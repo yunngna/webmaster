@@ -12,7 +12,7 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" /> <!-- 만약 타일즈 적용이 안된 jsp의 경우 추가 -->
     </head>
     <body>
         <div class="d-flex" id="wrapper">
@@ -61,7 +61,7 @@
             </div>
         </div>
         <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> <!-- 만약 타일즈 적용이 안된 jsp의 경우 추가 -->
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>

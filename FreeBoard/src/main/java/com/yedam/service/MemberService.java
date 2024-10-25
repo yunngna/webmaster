@@ -26,4 +26,7 @@ public interface MemberService {
 	//캘린더 추가 
 	boolean addEvent(CalendarVO event);
 	
+	//캘린더 삭제
+	boolean removeEvent(CalendarVO event);
+	
 }

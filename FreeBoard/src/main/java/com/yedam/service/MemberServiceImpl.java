@@ -48,6 +48,11 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.addEvent(event)==1;
 	}
 
+	@Override
+	public boolean removeEvent(CalendarVO event) {
+		return mapper.removeEvent(event)==1;
+	}
+
 	
 
 	

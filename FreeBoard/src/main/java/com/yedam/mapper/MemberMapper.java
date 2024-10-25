@@ -30,5 +30,8 @@ public interface MemberMapper {
 	
 	//캘린더 추가
 	public int addEvent(CalendarVO event);
+	
+	//캘린더 삭제 
+	public int removeEvent(CalendarVO event);
 
 }

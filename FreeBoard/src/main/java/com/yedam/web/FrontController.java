@@ -17,6 +17,8 @@ import com.yedam.control.CalendarWriterCont;
 import com.yedam.control.ChartControl;
 import com.yedam.control.CountWriterCont;
 import com.yedam.control.JavaScriptCont;
+import com.yedam.control.RemoveEventCont;
+import com.yedam.control.YellowBoxCont;
 import com.yedam.control.board.AddBoardControl;
 import com.yedam.control.board.AddBoardForm;
 import com.yedam.control.board.AddMemberCont;
@@ -110,6 +112,10 @@ public class FrontController extends HttpServlet {
 		map.put("/calendarByWirter.do", new CalendarWriterCont());
 			//추가
 		map.put("/addEvent.do", new AddEventCont());
+			//삭제 
+		map.put("/removeEvent.do", new RemoveEventCont());
+		
+		
 		
 	}
 	

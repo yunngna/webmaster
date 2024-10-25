@@ -75,6 +75,14 @@
 			#{startDate},
 			#{endDate})
 	</insert>
+	
+	<!-- 캘린더 삭제 -->
+	<delete id="removeEvent" parameterType = "com.yedam.vo.CalendarVO" >
+	delete from tbl_event
+	where title = #{title}
+	and   start_date = #{startDate}
+	and   end_date= #{endDate}
+	</delete>
    
     
 </mapper>

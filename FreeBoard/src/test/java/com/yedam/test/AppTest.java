@@ -9,11 +9,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.DataSource;
 import com.yedam.mapper.MemberMapper;
-import com.yedam.mapper.ReplyMapper;
 import com.yedam.service.MemberService;
 import com.yedam.service.MemberServiceImpl;
 import com.yedam.vo.CalendarVO;
-import com.yedam.vo.ReplyVO;
 
 public class AppTest {
 	public static void main(String[] args) {
@@ -126,8 +124,8 @@ public class AppTest {
 		
 		
 		//캘린더 추가 
-//		SqlSession sqlSession = DataSource.getInstance().openSession();
-//		MemberMapper mapper =sqlSession.getMapper(MemberMapper.class);
+		SqlSession sqlSession = DataSource.getInstance().openSession();
+		MemberMapper mapper =sqlSession.getMapper(MemberMapper.class);
 //		
 //		CalendarVO event = new CalendarVO();
 //		event.setTitle("lunch");
@@ -146,6 +144,17 @@ public class AppTest {
 		String json = gson.toJson(result);
 		
 		System.out.println(json);
+		
+		//캘린더 삭제
+		CalendarVO cvo = new CalendarVO();
+		cvo.setTitle("소풍2");
+		cvo.setStartDate("2024-10-23");
+		cvo.setEndDate("2024-10-25");
+		
+		if(svc.removeEvent(cvo)) {
+			System.out.println("성공");
+		}
+		
 
 		
 	}// close main
