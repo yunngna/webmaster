@@ -49,9 +49,10 @@ $('div.content ul').on('click','button', function(e) {
 $('#addReply').on('click', function(e) {
 	// bno (글번호), reply , replyer 가져오기 
 	//bno 글번호 
-	console.log($(e.target).parent().parent().parent().find('tr:sq(1)').text());
+
 	let reply = $('#reply').val();
-	if(!reply || !logId){
+	let replyer = logId;
+	if (!reply || !logId) {
 		alert('값입력');
 		return;
 	}
@@ -63,18 +64,22 @@ $('#addReply').on('click', function(e) {
 		dataType: 'json'
 	})
 		.done(function(result) {
-			if (result.retCode == 'OK') {
+			console.log(reply, logId);
+			if (result.retCode=='OK') {
+				console.log(result.retCode);
 				let item = result.retVal;
 				$('<li/>').append(
-					$('<span />').addClass('col-sm-2').text(item.replyNo), // 댓글번호
+					$('<span />').addClass('col-sm-2').text(item.bno), //  글번호
 					$('<span />').addClass('col-sm-5').text(item.reply), // 댓글내용
 					$('<span />').addClass('col-sm-2').text(item.replyer), // 작성자
-					$('<span />').addClass('col-sm-2').append($('<button>삭제</button>')) // 삭제버튼
+					$('<span />').addClass('col-sm-2').append($('<button>댓글등록</button>')) // 삭제버튼
 				)
-					.insertAfter($('div.content ul li:eq(0)'))
+				.insertAfter($('div.content ul li:eq(0)'))
+				//$('div.content ul li:eq(0)')는 .content 클래스를 가진 div 안에 있는 ul 리스트의 첫 번째 li 요소를 선택
 			}
 
 
-		})
+		}).fail(function(err) {
+			console.log(err);
+	}); 
 })
-	

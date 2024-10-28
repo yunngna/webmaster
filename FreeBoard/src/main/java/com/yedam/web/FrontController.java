@@ -64,9 +64,6 @@ public class FrontController extends HttpServlet {
 		// 회원목록 보기 
 		map.put("/memberList.do", new MemberListControl()); // control 이라는 인터페이스를 구현하는 클래스 형성 
 		
-		
-		
-		
 		// 회원등록 1) 등록 화면, 2) 등록 처리 
 		map.put("/memberAddForm.do", new MemberAddFormControl());
 		

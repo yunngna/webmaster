@@ -125,8 +125,8 @@
 
 <script>
 
-	const bno = "${boardvo.boardNo}";console.log(bno); //페이지의 게시글 번호 가져오기 
-	const logId = "${logId}"; console.log(logId);  // 로그인 상태의 로그아이디 가져오기
+	const bno = "${boardvo.boardNo}";//console.log(bno); //페이지의 게시글 번호 가져오기 
+	const logId = "${logId}"; //console.log(logId);  // 로그인 상태의 로그아이디 가져오기
 
 	 document.querySelector('input[value="수정"]')
  		.addEventListener('click', function(e){
