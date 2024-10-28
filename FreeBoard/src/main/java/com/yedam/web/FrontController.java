@@ -18,7 +18,6 @@ import com.yedam.control.ChartControl;
 import com.yedam.control.CountWriterCont;
 import com.yedam.control.JavaScriptCont;
 import com.yedam.control.RemoveEventCont;
-import com.yedam.control.YellowBoxCont;
 import com.yedam.control.board.AddBoardControl;
 import com.yedam.control.board.AddBoardForm;
 import com.yedam.control.board.AddMemberCont;
@@ -39,7 +38,7 @@ import com.yedam.control.reply.ReplyCountCont;
 import com.yedam.control.reply.ReplyListCont;
 
 //@WebServlet("*.do") 
-// * 전체  ,  .do : .do로 끝나는 것  = .do 로 끝나는 url 경우 모두 호출 됨 -> 서브렛이 너무 많으면 관리가 복잡하기 때문에 사용 
+// * 전체  ,  .do : .do 끝나는 것  = .do 로 끝나는 url 경우 모두 호출 됨 -> 서브렛이 너무 많으면 관리가 복잡하기 때문에 사용 
 public class FrontController extends HttpServlet {
 	// 필드 선언 
 	Map <String,Control> map;
@@ -104,11 +103,11 @@ public class FrontController extends HttpServlet {
 		map.put("/replyCount.do", new ReplyCountCont());
 		
 		//차트 (차트API)
-		map.put("/chart.do", new ChartControl()); //차트jsp불러오기
+		map.put("/chart.do", new ChartControl()); //차트(jsp)불러오기
 		map.put("/countByWriter.do",new CountWriterCont()); //데이터 불러오는 컨트롤
 		
 		//캘린더 (캘린더 API)
-		map.put("/calendar.do", new CalendarControl()); //캘린더 jsp 불러오기 
+		map.put("/calendar.do", new CalendarControl()); //캘린더 (jsp) 불러오기 
 		map.put("/calendarByWirter.do", new CalendarWriterCont());
 			//추가
 		map.put("/addEvent.do", new AddEventCont());
@@ -122,7 +121,7 @@ public class FrontController extends HttpServlet {
 	// service()
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		System.out.println("service호출");
+//System.out.println("service호출");
 		
 		
 		// 요청페이지 

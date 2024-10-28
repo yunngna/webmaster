@@ -142,9 +142,5 @@
 </script>
 
 <!--댓글 자바스크립트 연결 -->
-<!--<script src ="js/replyService.js"></script>  -->
-<!-- <script src="js/reply.js"></script> -->
-
-<!-- jquery 라이브러리리 추가  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src = "js/jreply.js"></script>
+<script src ="js/replyService.js"></script>
+<script src="js/reply.js"></script>

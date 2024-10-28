@@ -22,10 +22,10 @@ public class RemoveReplyCont implements Control {
 		ReplyService svc = new ReplyServiceImpl();
 		if (svc.deleteReply(Integer.parseInt(rno))){
 			// 잘 삭제 된다면 {"retCod":"OK"}
-		resp.getWriter().print(" {\"retCod\":\"OK\"}");
+		resp.getWriter().print(" {\"retCode\":\"OK\"}");
 		}else {
 			//삭제 실패시  {"retCod":"Fail"}
-			resp.getWriter().print(" {\"retCod\":\"FAIL\"}");
+			resp.getWriter().print(" {\"retCode\":\"FAIL\"}");
 		}
 
 	}
