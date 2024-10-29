@@ -14,6 +14,7 @@ public class ReplyCountCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//댓글 갯수 조회 (글 번호당)
 		//게시글 번호 parameter 가져오기 
 		String bno = req.getParameter("bno");
 		
