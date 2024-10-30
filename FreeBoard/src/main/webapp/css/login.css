@@ -1,0 +1,42 @@
+@charset "UTF-8";
+@charset "UTF-8";
+*{
+  box-sizing: border-box;
+}
+
+h2{
+  text-align: center;
+}
+
+form{
+  border: solid 1px;
+  padding: 20px;
+}
+
+form label{
+  display: inline-block;
+}
+form ul {
+  padding: 0 20px;
+}
+form li {
+  list-style: none;
+}
+form input{
+  width: 250px;
+  padding: 3px;
+  margin: 10px;
+}
+
+form fieldset{
+  border: none;
+  text-align: center;
+}
+
+button{
+  background-color: rgb(177, 223, 108);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
