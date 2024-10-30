@@ -113,6 +113,10 @@ public class FrontController extends HttpServlet {
 		
 		
 		
+		
+		
+		System.out.println("rjsjsejje");
+		
 	}
 	
 	// service()
