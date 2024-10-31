@@ -29,4 +29,8 @@ public interface MemberService {
 	//캘린더 삭제
 	boolean removeEvent(CalendarVO event);
 	
+	//프로젝트 테스트용 
+	//로그인 
+		MemberVO MemberLogin(String memberId ,String password);
+	
 }

@@ -52,6 +52,12 @@ public class MemberServiceImpl implements MemberService{
 	public boolean removeEvent(CalendarVO event) {
 		return mapper.removeEvent(event)==1;
 	}
+	
+	//프로젝트 테스트 용
+	@Override
+	public MemberVO MemberLogin(String memberId, String password) {
+		return mapper.loginMember(memberId, password);
+	}
 
 	
 

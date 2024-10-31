@@ -2,7 +2,7 @@ package co.yedam.service;
 
 import java.util.List;
 
-import co.yedam.vo.ProductVO;
+import main.java.co.yedam.vo.ProductVO;
 
 public interface ProductService {
 	String cheeringMessage();

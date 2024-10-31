@@ -17,6 +17,7 @@ import com.yedam.control.CalendarWriterCont;
 import com.yedam.control.ChartControl;
 import com.yedam.control.CountWriterCont;
 import com.yedam.control.JavaScriptCont;
+import com.yedam.control.ProjectLoginControl;
 import com.yedam.control.RemoveEventCont;
 import com.yedam.control.board.AddBoardControl;
 import com.yedam.control.board.AddBoardForm;
@@ -110,6 +111,9 @@ public class FrontController extends HttpServlet {
 		map.put("/addEvent.do", new AddEventCont());
 			//삭제 
 		map.put("/removeEvent.do", new RemoveEventCont());
+		
+		//프로젝트 체크
+		map.put("/logins.do", new ProjectLoginControl());
 		
 		
 		

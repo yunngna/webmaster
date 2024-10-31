@@ -33,5 +33,9 @@ public interface MemberMapper {
 	
 	//캘린더 삭제 
 	public int removeEvent(CalendarVO event);
-
+	
+	//프로젝트 체크용 
+	//id.password조회 (로그인)
+		public MemberVO loginMembers(@Param("memberId")String memberId,@Param("password")String password);
+	
 }

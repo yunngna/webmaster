@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import lombok.Data;
 
-@Data
+@data
 public class ProductVO {
 	private String prdCode;
 	private String prdName;

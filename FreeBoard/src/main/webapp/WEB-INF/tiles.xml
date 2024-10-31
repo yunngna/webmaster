@@ -21,6 +21,10 @@
   	<put-attribute name="title" value="111111" />
  	 <put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp" />
   </definition>
+  <definition name = "WILDCARD:member/*" extends="user.home">
+  	<put-attribute name="title" value="111111" />
+ 	 <put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp" />
+  </definition>
   
   <!-- 관리자 용  (회원관리 -> memberListcontrol 경로 지정 )-->
   <definition name="admin.home" template="/WEB-INF/layout/templateAdmin.jsp">

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.common.Control;
+import main.java.co.yedam.common.Control;
 
 public class FrontController extends HttpServlet {
 

@@ -8,9 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.common.Control;
 import co.yedam.service.ProductService;
 import co.yedam.service.ProductServiceImpl;
+import main.java.co.yedam.common.Control;
 
 public class MainControl implements Control {
 

@@ -32,6 +32,7 @@
                     <%} else { %>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logOut.do">로그아웃[ <%=logId%> ]</a>
                     <%} %>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logins.do">프젝로그인</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
                 </div>
             </div>

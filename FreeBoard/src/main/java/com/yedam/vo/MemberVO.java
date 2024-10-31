@@ -21,6 +21,14 @@ public class MemberVO {
 	private String responsibility;
 	private Date creationDate;
 	
-	// 메소드 
+	//프로젝트 테스트 용 
+	private String memberIds;
+	private String passwords;	
+	private String memberNames;	
+	private String address;
+	private String email;
+	private String tel;	
+	private Date joinedDate;
+	private String permission;
 	
 }

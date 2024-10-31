@@ -1,17 +1,9 @@
 package com.yedam.test;
 
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.yedam.common.DataSource;
 import com.yedam.mapper.MemberMapper;
-import com.yedam.service.MemberService;
-import com.yedam.service.MemberServiceImpl;
-import com.yedam.vo.CalendarVO;
 
 public class AppTest {
 	public static void main(String[] args) {
@@ -136,24 +128,28 @@ public class AppTest {
 //		};
 		
 		//캘린더 조회
-		MemberService svc = new MemberServiceImpl();
-		
-		List<Map<String,Object>> result = svc.eventList();
-		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String json = gson.toJson(result);
-		
-		System.out.println(json);
+//		MemberService svc = new MemberServiceImpl();
+//		
+//		List<Map<String,Object>> result = svc.eventList();
+//		
+//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//		String json = gson.toJson(result);
+//		
+//		System.out.println(json);
 		
 		//캘린더 삭제
-		CalendarVO cvo = new CalendarVO();
-		cvo.setTitle("소풍2");
-		cvo.setStartDate("2024-10-23");
-		cvo.setEndDate("2024-10-25");
+//		CalendarVO cvo = new CalendarVO();
+//		cvo.setTitle("소풍2");
+//		cvo.setStartDate("2024-10-23");
+//		cvo.setEndDate("2024-10-25");
+//		
+//		if(svc.removeEvent(cvo)) {
+//			System.out.println("성공");
+//		}
 		
-		if(svc.removeEvent(cvo)) {
-			System.out.println("성공");
-		}
+
+		
+		
 		
 
 		
