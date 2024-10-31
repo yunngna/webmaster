@@ -113,6 +113,11 @@ public class FrontController extends HttpServlet {
 		
 		
 		
+		
+		
+		System.out.println("rjsjsejje");
+		System.out.println("temp mearge test");
+		
 	}
 	
 	// service()
