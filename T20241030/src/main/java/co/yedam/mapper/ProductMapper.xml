@@ -18,31 +18,32 @@
 	  from dual
 	</select>
 	
-	<!-- 전체 조회 -->
+	<!--  전체조회 -->
 	<select id="productList" resultType="product">
-		select prd_code,
-       		   prd_name,
-       		   prd_desc,
-		       origin_price,
-		       sale_price,
-		       star_point,
-		       prod_image,
-		       creation_date
-		from   product_tbl
+	select prd_code
+	      ,prd_name
+	      ,prd_desc
+	      ,origin_price
+	      ,sale_price
+	      ,star_point
+	      ,prod_image
+	      ,creation_Date
+	from product_tbl
+	order by star_point desc
 	</select>
 	
-	<!-- 검색 조회 -->
-	<select id="selectProduct" parameterType="String" resultType="product">
-		select prd_code,
-       		   prd_name,
-       		   prd_desc,
-		       origin_price,
-		       sale_price,
-		       star_point,
-		       prod_image,
-		       creation_date
-		from product_tbl
-		where prd_code= #{proCode}
+	<!-- 상세조회 -->
+	<select id="selectProduct" parameterType="string" resultType="product" >
+	select prd_code
+	      ,prd_name
+	      ,prd_desc
+	      ,origin_price
+	      ,sale_price
+	      ,star_point
+	      ,prod_image
+	      ,creation_Date
+	from product_tbl
+	where prd_code = #{prdCode}
 	</select>
 
 </mapper>

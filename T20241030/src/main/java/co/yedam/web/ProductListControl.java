@@ -16,19 +16,12 @@ public class ProductListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//목록 보여주기 
-		req.setCharacterEncoding("utf-8");
-	
 		ProductService svc = new ProductServiceImpl();
-		List<ProductVO> list = svc.productList();
+		List<ProductVO>list = svc.productList();
+		
 		req.setAttribute("productList", list);
-	
 		
-		
-		for (ProductVO pro : list) {
-			System.out.println(pro);
-		}
-		req.getRequestDispatcher("WEB-INF/jsp/productList.jsp").forward(req, resp);
+		req.getRequestDispatcher("product/productList.tiles").forward(req, resp);
 
 	}
 

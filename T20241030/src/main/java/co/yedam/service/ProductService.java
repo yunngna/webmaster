@@ -8,10 +8,9 @@ public interface ProductService {
 	String cheeringMessage();
 	String hintMessage(String remainTimeString);
 	
-	//전체 조회
-	List<ProductVO> productList();
-	
-	//단건 조회 
-	ProductVO selectProduct(String proCode);
+	//전체조회
+	List<ProductVO>productList();
+	//상세조회
+	ProductVO selectProduct(String prdCode);
 	
 }

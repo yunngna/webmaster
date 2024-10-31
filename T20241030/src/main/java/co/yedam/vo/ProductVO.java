@@ -1,6 +1,6 @@
 package co.yedam.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.Data;
 
@@ -14,7 +14,5 @@ public class ProductVO {
 	private int starPoint;
 	private String prodImage;
 	private Date creationDate;
-	
-	
 
 }

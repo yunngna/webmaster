@@ -1,6 +1,7 @@
 package co.yedam.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,16 +16,21 @@ public class ProductControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String code = req.getParameter("proCode");
+		//커피코드 받아오기 
+		String prdCode = req.getParameter("prdCode");
 		
 		ProductService svc = new ProductServiceImpl();
+		ProductVO product = svc.selectProduct(prdCode);
 		
-		ProductVO product = svc.selectProduct(code);
+		List<ProductVO>list = svc.productList();
 		
-		req.setAttribute("productvo", product);
+		req.setAttribute("productList", list);
 		
-		req.getRequestDispatcher("WEB-INF/jsp/productInfo.jsp").forward(req, resp);
+		req.setAttribute("products",product);
+		
+		req.getRequestDispatcher("product/productInfo.tiles").forward(req, resp);
+		
+		
 		
 
 	}
