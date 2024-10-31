@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.yedam.mapper.ReplyMapper"> <!-- mapper namespace 와 가져올 인터페이스의 값이 맞아야 한다.  -->
+  <!-- 전체 조회 -->
+  <select id="selectList" parameterType = "int" resultType ="com.yedam.vo.ReplyVO">
+  select * from tbl_reply
+  where board_no = #{boardNo}
+  </select>
+  
+  <!-- 페이징 전체조회 -->
+<select id ="selectListPasing" >
+	select a.*
+	from (select /*+INDEX_DESC(r pk_reply) */rownum rn,r.*
+	        from tbl_reply r
+	        where board_no = ${bno} ) a
+	where a.rn > (${page} -1) * 5
+	<![CDATA[
+	and   a.rn <= ${page} * 5
+	]]>
+</select>
+
+  
+  <!-- 삭제  -->
+    <delete id="deleteReply" parameterType = "int">
+    delete from tbl_reply
+    where reply_no = #{replyNo}
+    </delete>
+    
+    <!-- 삽입  -->
+    <insert id="addReply" parameterType = "com.yedam.vo.ReplyVO">
+    	<selectKey  keyProperty="replyNo" order="BEFORE" resultType="int">
+    		select reply_seq.nextval from dual <!-- reply_no insert 작업 전에 replyNo을 가져오기  --> 
+    	</selectKey>
+    insert into tbl_reply 
+    					(reply_no, 
+    					 reply, 
+    					 replyer, 
+    					 board_no)
+    values (#{replyNo},
+    		#{reply},
+    		#{replyer},
+    		#{boardNo})
+    </insert>
+    
+    <!-- 단건조회  -->
+    <select id ="selectReply" parameterType = "int" resultType="com.yedam.vo.ReplyVO">
+    select reply_no
+    	  ,reply
+    	  ,replyer
+    	  ,board_no
+    	  ,reply_date
+    from tbl_reply
+    where reply_no = #{replyNo}
+    </select>
+    
+    <!-- 댓글 전체 데이터 갯수 조회 -->
+    <select id="selectCount" parameterType ="int">
+    select count(1)
+    from tbl_reply
+    where board_no = #{boardNo}
+    
+    </select>
+    
+    
+   
+</mapper>
