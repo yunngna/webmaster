@@ -3,7 +3,7 @@
 
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/login.css">
-<link rel="stylesheet" href="css/join.css">
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- 데이터 포맷에 사용 -->
 

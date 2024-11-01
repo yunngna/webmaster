@@ -16,12 +16,12 @@ pageEncoding="UTF-8"%>
 		<form action="logins.do" method="POST" class="text-center">
 			<!-- ID  -->
 			<div data-mdb-input-init class="form-outline mb-4">
-				<input type="text" id="memberId" name ="memberId" class="form-control" placeholder="ID"/>
+				<input type="text" name ="memberId" class="form-control" placeholder="ID"/>
 			</div>
 		  
 			<!-- Password -->
 			<div data-mdb-input-init class="form-outline mb-4">
-			  <input type="password" id="password" name="password" class="form-control" placeholder="password" />
+			  <input type="password" name="password" class="form-control" placeholder="password" />
 			</div>
 		  
 			<!-- 아이디기억하기 -->

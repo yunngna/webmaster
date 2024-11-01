@@ -1,18 +1,18 @@
 /**
  * login.js
  */
-$(document).ready(function(){
+$(document).ready(function(e){
     // 쿠키에 저장된 memberId 값을 가져와 ID 칸에 넣기 
     var memberId = getCookie("memberId");
     $("#memberId").val(memberId);
-    
+    console.log(memberId);
     // memberId가 쿠키에 있으면 체크박스 체크 상태로 설정
     if ($("#memberId").val() !== "") {
         $("#checkId").prop("checked", true);
     }
     
     // 체크박스 상태 변경 시 쿠키 설정 또는 삭제
-    $("#checkId").change(function(){
+    $("#checkId").change(function(e){
         if($("#checkId").is(":checked")) {
             setCookie("memberId", $("#memberId").val(), 7); // 7일 동안 쿠키 저장
         } else {
@@ -21,7 +21,7 @@ $(document).ready(function(){
     });
     
     // ID 저장하기를 체크한 상태에서 ID 입력 시 ID 쿠키에 저장
-    $("#memberId").keyup(function(){
+    $("#memberId").keyup(function(e){
         if($("#checkId").is(":checked")) { // ID 저장 체크박스에 체크되어 있으면
             setCookie("memberId", $("#memberId").val(), 7); // 7일 동안 쿠키 저장
         }
